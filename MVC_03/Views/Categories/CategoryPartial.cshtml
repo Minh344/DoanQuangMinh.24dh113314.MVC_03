@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MVC_03.Model.Category>
+
+<h3>Danh mục Loại SP</h3>
+<ul id="div-u" style="list-style-type:none;">
+    @foreach (var item in Model)
+    {
+        <li class="div-cate">
+            @Html.ActionLink(item.NameCate, "ProductList", "Products", new { category = item.IDCate }, null)
+        </li>
+    }
+</ul>

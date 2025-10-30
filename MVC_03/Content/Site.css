@@ -1,0 +1,102 @@
+﻿/* ==================== */
+/* == Giao diện trang MUA HÀNG == */
+/* ==================== */
+
+/* Navbar */
+.navbar-inverse {
+    background-color: #222;
+    border-color: #080808;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: white;
+    }
+
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: #ff9900;
+        }
+
+/* Layout tổng thể */
+body {
+    background-color: #f5f5f5;
+}
+
+.body-content {
+    margin-top: 70px;
+}
+
+/* ========== DANH MỤC LOẠI SP (Cột trái) ========== */
+#div-u {
+    background-color: cornflowerblue;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+    #div-u h3 {
+        color: darkred;
+        text-align: center;
+        font-weight: bold;
+    }
+
+.div-cate {
+    background-color: #4A80E0;
+    margin-bottom: 8px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+    .div-cate a {
+        color: yellow;
+        text-decoration: none;
+        display: block;
+        font-weight: bold;
+    }
+
+        .div-cate a:hover {
+            color: chartreuse;
+            background-color: #1a53ff;
+        }
+
+/* ========== DANH SÁCH SẢN PHẨM ========== */
+.card-pro {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+    .card-pro:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+/* Nút */
+.btn-info {
+    background-color: #4A90E2;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    border: none;
+}
+
+/* Thanh tìm kiếm */
+.search-box {
+    border: 3px solid #ff6a00;
+    height: 70px;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Phân trang */
+.pagination {
+    justify-content: center;
+}

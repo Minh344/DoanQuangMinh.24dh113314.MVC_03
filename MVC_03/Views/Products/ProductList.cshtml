@@ -1,0 +1,81 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<MVC_03.Model.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="container">
+    <h2><b>MUA HÀNG</b></h2>
+
+    <!-- Thanh tìm kiếm -->
+    <div class="search-box">
+        @using (Html.BeginForm("ProductList", "Products", FormMethod.Get))
+        {
+            <table style="margin:auto;">
+                <tr>
+                    <td>
+                        Tên sản phẩm:
+                        @Html.TextBox("SearchString", null, new { @style = "width:150px;" })
+                        <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
+                    </td>
+                    <td style="padding-left:15px;">
+                        Giá từ:
+                        <input type="number" name="min" style="width:80px;" />
+                        đến:
+                        <input type="number" name="max" style="width:80px;" />
+                        <input type="submit" value="Tìm giá" class="btn btn-warning" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+
+    <!-- Danh sách sản phẩm -->
+    @{
+        string[] imageList = { "ao1.jpg", "aokhoac1.jpg", "quan1.jpg", "giay1.jpg", "ao2.jpg", "quan2.jpg","TUI1.JPG" };
+        int index = 0;
+    }
+
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            var imageName = imageList[index % imageList.Length];
+            index++;
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card-pro">
+                    <img src="~/Content/images/@imageName" width="200" height="250" />
+                    <p><b>@pro.NamePro</b></p>
+                    <p>
+                        Đơn giá:
+                        <font color="red">
+                            @($"{Convert.ToDouble(pro.Price):N0} VNĐ")
+                        </font>
+                    </p>
+                    <p>
+                        <a class="btn btn-info" href="/Products/Details/@pro.ProductID">Chi tiết</a>
+                        <input type="submit" value="Mua" class="btn btn-danger" />
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Phân trang -->
+    <div style="text-align:center;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }),
+            new PagedListRenderOptions
+            {
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always
+            })
+    </div>
+</div>
